@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  itemsmicroservice.api:
+    image: ${DOCKER_REGISTRY-}itemsmicroserviceapi
+    container_name: API
+    build:
+      context: .
+      dockerfile: ItemsMicroservice.Api/Dockerfile
+  
+  itemsmicroservice.db:
+    image: postgres:latest
+    container_name: Database
+    environment:
+      - POSTGRES_DB=itemsmicroservice
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./.containers/database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
