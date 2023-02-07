@@ -1,4 +1,5 @@
 ﻿using ItemsMicroservice.Infrastructure.Database;
+using ItemsMicroservice.Infrastructure.Middleware;
 using ItemsMicroservice.Infrastructure.Repositories;
 using ItemsMicroservice.Infrastructure.Services;
 using ItemsMicroservice.Infrastructure.Settings;
@@ -31,13 +32,21 @@ public static class InfrastructureModule
         services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
         services.AddJwtAuthentication(configuration);
         services.AddAuthorization(x => x.AddPolicy(Constants.Policies.RequireAdminRole, p => p.RequireRole(Constants.Users.Roles.Admin)));
+
+        // Exceptions middleware
+        services.AddSingleton<ExceptionsMiddleware>();
     }
 
     public static async Task UseInfrastructureAsync(this IApplicationBuilder app)
     {
+        // Authentication
         app.UseAuthentication();
         app.UseAuthorization();
 
+        // Exceptions middleware
+        app.UseMiddleware<ExceptionsMiddleware>();
+
+        // Database setup
         using var scope = app.ApplicationServices.CreateScope();
         using var context = scope.ServiceProvider.GetService<ItemsMicroserviceDbContext>();
         if(context != null)
