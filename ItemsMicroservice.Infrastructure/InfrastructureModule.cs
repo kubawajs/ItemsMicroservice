@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 namespace ItemsMicroservice.Infrastructure;
+
 public static class InfrastructureModule
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
@@ -26,11 +27,10 @@ public static class InfrastructureModule
         services.AddScoped<IIdentityService, IdentityService>();
 
         // Authentication
-        services.AddAuthentication();
-        services.AddAuthorization();
-        services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
         services.ConfigureIdentity();
+        services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
         services.AddJwtAuthentication(configuration);
+        services.AddAuthorization(x => x.AddPolicy(Constants.Policies.RequireAdminRole, p => p.RequireRole(Constants.Users.Roles.Admin)));
     }
 
     public static async Task UseInfrastructureAsync(this IApplicationBuilder app)
@@ -43,7 +43,11 @@ public static class InfrastructureModule
         if(context != null)
         {
             await context.Database.MigrateAsync();
-            // TODO: seed users
+            if(!context.Users.Any())
+            {
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                await StaticDbInitializer.CreateUsersAsync(userManager);
+            }
         }
     }
 

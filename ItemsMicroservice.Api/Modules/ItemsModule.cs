@@ -2,6 +2,7 @@
 using ItemsMicroservice.Application.Items.GetItem;
 using ItemsMicroservice.Application.Items.GetItems;
 using ItemsMicroservice.Application.Items.UpdateItem;
+using ItemsMicroservice.Infrastructure;
 using MediatR;
 
 namespace ItemsMicroservice.Api.Modules;
@@ -38,7 +39,7 @@ internal static class ItemsModule
             var response = await mediator.Send(command);
             return response != null ? Results.CreatedAtRoute("GetItemByCode", new { code = request.Code }) : Results.BadRequest();
         })
-        .RequireAuthorization()
+        .RequireAuthorization(Constants.Policies.RequireAdminRole)
         .ProducesProblem(statusCode: 400)
         .WithName("AddItem");
 
@@ -48,7 +49,7 @@ internal static class ItemsModule
             var response = await mediator.Send(command);
             return response != null ? Results.NoContent() : Results.BadRequest();
         })
-        .RequireAuthorization()
+        .RequireAuthorization(Constants.Policies.RequireAdminRole)
         .ProducesProblem(statusCode: 400)
         .WithName("UpdateItem");
     }

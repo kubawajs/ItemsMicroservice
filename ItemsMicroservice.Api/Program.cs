@@ -26,7 +26,8 @@ await app.UseInfrastructureAsync();
 
 app.UseHttpsRedirection();
 
-// Map endpoint
+// Map endpoints
 app.MapItemsEndpoints();
+app.MapAuthenticationEndpoints();
 
 app.Run();

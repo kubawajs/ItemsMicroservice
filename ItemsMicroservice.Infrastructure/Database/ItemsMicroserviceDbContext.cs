@@ -23,6 +23,10 @@ internal sealed class ItemsMicroserviceDbContext : IdentityDbContext<IdentityUse
             entity.HasIndex(entity => entity.Name).IsUnique();
         });
 
+        // Identity
+        builder.Entity<IdentityRole>()
+            .HasData(new IdentityRole { Name = Constants.Users.Roles.Admin, NormalizedName = Constants.Users.Roles.Admin.ToUpper() });
+
         base.OnModelCreating(builder);
     }
 }

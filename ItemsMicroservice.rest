@@ -1,5 +1,5 @@
 @apiUrl = https://localhost/api
-@bearerToken = test
+@bearerToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsImp0aSI6IjU4NDNmYjdjLWE3NzEtNDFmMi04NzlhLTY5MzJhMTFlOWMwNyIsImVtYWlsIjoiYWRtaW4iLCJpZCI6IjVjZDcwMjBhLTI4OGUtNDQ5YS05NDQ0LTcwMjY3MmJlZDI0NSIsInJvbGUiOiJJdGVtc0FkbWluIiwibmJmIjoxNjc1ODA4MDg3LCJleHAiOjE2NzY0MTI4ODcsImlhdCI6MTY3NTgwODA4N30.ypqp3IWg2qiKyTbJRu_pXP6HlI85OBLb-ksb55q6Lls
 @code = test
 
 ### Health check
@@ -11,7 +11,7 @@ Content-Type: application/json
 
 {
   "username": "user",
-  "password": "user123$"
+  "password": "User123$"
 }
 
 ### Login as "Zarządzanie Items - administracja"
@@ -20,7 +20,7 @@ Content-Type: application/json
 
 {
   "username": "admin",
-  "password": "admin123$"
+  "password": "Admin123$"
 }
 
 ### Get items

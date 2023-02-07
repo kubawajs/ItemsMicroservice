@@ -43,12 +43,12 @@ internal sealed class JwtTokenGenerator : IJwtTokenGenerator
     private async Task<ClaimsIdentity> GetClaimsAsync(IdentityUser user)
     {
         List<Claim> claims = new()
-            {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
-                new Claim("id", user.Id)
-            };
+        {
+            new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(JwtRegisteredClaimNames.Email, user.UserName),
+            new Claim("id", user.Id)
+        };
 
         var userClaims = await _userManager.GetClaimsAsync(user);
         var userRoles = await _userManager.GetRolesAsync(user);
