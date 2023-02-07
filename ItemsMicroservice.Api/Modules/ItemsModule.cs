@@ -16,6 +16,7 @@ internal static class ItemsModule
             var response = await mediator.Send(query);
             return response != null ? Results.Ok(response) : Results.NotFound();
         })
+        .RequireAuthorization()
         .Produces<IEnumerable<GetItemResponse>>()
         .ProducesProblem(statusCode: 400)
         .WithName("GetItems");
@@ -26,6 +27,7 @@ internal static class ItemsModule
             var response = await mediator.Send(query);
             return response != null ? Results.Ok(response) : Results.NotFound();
         })
+        .RequireAuthorization()
         .Produces<GetItemResponse>()
         .ProducesProblem(statusCode: 400)
         .WithName("GetItemByCode");
@@ -36,6 +38,7 @@ internal static class ItemsModule
             var response = await mediator.Send(command);
             return response != null ? Results.CreatedAtRoute("GetItemByCode", new { code = request.Code }) : Results.BadRequest();
         })
+        .RequireAuthorization()
         .ProducesProblem(statusCode: 400)
         .WithName("AddItem");
 
@@ -45,6 +48,7 @@ internal static class ItemsModule
             var response = await mediator.Send(command);
             return response != null ? Results.NoContent() : Results.BadRequest();
         })
+        .RequireAuthorization()
         .ProducesProblem(statusCode: 400)
         .WithName("UpdateItem");
     }

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsMicroservice.Api", "ItemsMicroservice.Api\ItemsMicroservice.Api.csproj", "{83D746C9-260F-40C2-BB77-14DAF5311027}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemsMicroservice.Api", "ItemsMicroservice.Api\ItemsMicroservice.Api.csproj", "{83D746C9-260F-40C2-BB77-14DAF5311027}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsMicroservice.Core", "ItemsMicroservice.Core\ItemsMicroservice.Core.csproj", "{B7E34055-1844-46C3-9C08-13457A5E7A09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemsMicroservice.Core", "ItemsMicroservice.Core\ItemsMicroservice.Core.csproj", "{B7E34055-1844-46C3-9C08-13457A5E7A09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsMicroservice.Application", "ItemsMicroservice.Application\ItemsMicroservice.Application.csproj", "{7CD21ADB-73AB-42F0-BB28-8881BC366909}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemsMicroservice.Application", "ItemsMicroservice.Application\ItemsMicroservice.Application.csproj", "{7CD21ADB-73AB-42F0-BB28-8881BC366909}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemsMicroservice.Infrastructure", "ItemsMicroservice.Infrastructure\ItemsMicroservice.Infrastructure.csproj", "{E1EB0DD2-173C-414E-8BC4-864ACC9A96DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ItemsMicroservice.Infrastructure", "ItemsMicroservice.Infrastructure\ItemsMicroservice.Infrastructure.csproj", "{E1EB0DD2-173C-414E-8BC4-864ACC9A96DC}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{0ACE6630-E28F-41B5-A2AF-E9AA924499B9}"
 EndProject

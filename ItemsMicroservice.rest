@@ -5,16 +5,36 @@
 ### Health check
 GET {{apiUrl}}/healthcheck
 
+### Login as "Administracja Items"
+POST {{apiUrl}}/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user123$"
+}
+
+### Login as "Zarządzanie Items - administracja"
+POST {{apiUrl}}/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123$"
+}
+
 ### Get items
 GET {{apiUrl}}/items
+Authorization: Bearer {{bearerToken}}
 
 ### Get item by code
 GET {{apiUrl}}/items/{{code}}
+Authorization: Bearer {{bearerToken}}
 
 ### Create item
 POST {{apiUrl}}/items
 Content-Type: application/json
-# Authorization: Bearer {{bearerToken}}
+Authorization: Bearer {{bearerToken}}
 
 {
   "code": "{{code}}",
@@ -26,7 +46,7 @@ Content-Type: application/json
 ### Update item
 PUT {{apiUrl}}/items
 Content-Type: application/json
-# Authorization: Bearer {{bearerToken}}
+Authorization: Bearer {{bearerToken}}
 
 {
   "code": "{{code}}",
