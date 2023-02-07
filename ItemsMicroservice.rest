@@ -1,0 +1,36 @@
+@apiUrl = https://localhost/api
+@bearerToken = test
+@code = test
+
+### Health check
+GET {{apiUrl}}/healthcheck
+
+### Get items
+GET {{apiUrl}}/items
+
+### Get item by code
+GET {{apiUrl}}/items/{{code}}
+
+### Create item
+POST {{apiUrl}}/items
+Content-Type: application/json
+# Authorization: Bearer {{bearerToken}}
+
+{
+  "code": "{{code}}",
+  "name": "Test name",
+  "color": "red",
+  "notes": "Lorem ipsum dolor sit amet."
+}
+
+### Update item
+PUT {{apiUrl}}/items
+Content-Type: application/json
+# Authorization: Bearer {{bearerToken}}
+
+{
+  "code": "{{code}}",
+  "name": "Test name updated",
+  "color": "green",
+  "notes": "Lorem ipsum dolor sit amet updated."
+}

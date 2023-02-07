@@ -5,8 +5,8 @@ namespace ItemsMicroservice.Infrastructure.Exceptions;
 
 internal sealed class ItemNotFoundException : ItemsMicroserviceException
 {
-    public ItemNotFoundException(Item item) 
-        : base($"Item with code {item.Code} and name {item.Name} was not found.")
+    public ItemNotFoundException(string itemCode) 
+        : base($"Item with code {itemCode} was not found.")
     {
     }
 }

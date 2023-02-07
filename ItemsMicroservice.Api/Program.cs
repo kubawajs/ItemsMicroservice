@@ -1,5 +1,6 @@
 using ItemsMicroservice.Api.Modules;
 using ItemsMicroservice.Application;
+using ItemsMicroservice.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Add custom modules
+await app.UseInfrastructureAsync();
 
 app.UseHttpsRedirection();
 

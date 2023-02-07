@@ -21,26 +21,17 @@ internal sealed class ItemsRepository : IItemsRepository
     }
 
     public async Task<Item?> GetByCodeAsync(string code, CancellationToken cancellationToken) => 
-        await _context.Items.FindAsync(code, cancellationToken);
+        await _context.Items.AsNoTracking().FirstOrDefaultAsync(item => item.Code == code);
 
     public async Task<IEnumerable<Item>> GetAllAsync(CancellationToken cancellationToken)
     {
         // TODO: pagination
-        return await _context.Items.ToListAsync();
+        return await _context.Items.AsNoTracking().ToListAsync();
     }
 
     public async Task UpdateAsync(Item item, CancellationToken cancellationToken)
     {
-        var itemToUpdate = await _context.Items.FindAsync(item);
-        if(itemToUpdate == null)
-        {
-            throw new ItemNotFoundException(item);
-        }
-
-        itemToUpdate.Name = item.Name;
-        itemToUpdate.Color = item.Color;
-        itemToUpdate.Notes = item.Notes;
-
         _context.Update(item);
+        await _context.SaveChangesAsync();
     }
 }
