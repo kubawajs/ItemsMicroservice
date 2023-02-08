@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ItemsMicroservice.Infrastructure.Database;
 
-internal sealed class ItemsMicroserviceDbContext : IdentityDbContext<IdentityUser>
+public sealed class ItemsMicroserviceDbContext : IdentityDbContext<IdentityUser>
 {
     public DbSet<Color> Colors { get; set; }
     public DbSet<Item> Items { get; set; }

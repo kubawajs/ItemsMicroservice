@@ -9,7 +9,7 @@ public sealed class GetItemCommandHandler : IRequestHandler<GetItemQuery, GetIte
 
     public GetItemCommandHandler(IItemsRepository itemsRepository) => _itemsRepository = itemsRepository;
 
-    public async Task<GetItemResponse?> Handle(GetItemQuery request, CancellationToken cancellationToken)
+    public async Task<GetItemResponse?> Handle(GetItemQuery request, CancellationToken cancellationToken = default)
     {
         var item = await _itemsRepository.GetByCodeAsync(request.Code, cancellationToken);
         return item != null ? new GetItemResponse(item.Code, item.Name, item.Notes, item.Color) : null;

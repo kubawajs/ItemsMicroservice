@@ -10,7 +10,7 @@ public sealed class GetItemsCommandHandler : IRequestHandler<GetItemsQuery, IEnu
 
     public GetItemsCommandHandler(IItemsRepository itemsRepository) => _itemsRepository = itemsRepository;
 
-    public async Task<IEnumerable<GetItemResponse>> Handle(GetItemsQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<GetItemResponse>> Handle(GetItemsQuery request, CancellationToken cancellationToken = default)
     {
         var items = await _itemsRepository.GetAllAsync(cancellationToken);
         return items.Select(item => new GetItemResponse(item.Code, item.Name, item.Notes, item.Color));

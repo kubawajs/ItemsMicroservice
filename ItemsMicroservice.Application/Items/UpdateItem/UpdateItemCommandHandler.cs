@@ -10,8 +10,9 @@ public sealed class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand
 
     public UpdateItemCommandHandler(IItemsRepository itemsRepository) => _itemsRepository = itemsRepository;
 
-    public async Task<UpdateItemResponse?> Handle(UpdateItemCommand request, CancellationToken cancellationToken)
+    public async Task<UpdateItemResponse?> Handle(UpdateItemCommand request, CancellationToken cancellationToken = default)
     {
+        // TODO: check if color exists
         var item = new Item
         {
             Code = request.Code,

@@ -10,6 +10,9 @@ services:
     ports:
       - 80:80
       - 443:443
+    depends_on:
+      - itemsmicroservice.db
+      - itemsmicroservice.redis
   
   itemsmicroservice.db:
     image: postgres:latest
@@ -22,3 +25,11 @@ services:
       - ./.containers/database:/var/lib/postgresql/data
     ports:
       - 5432:5432
+
+  itemsmicroservice.redis:
+    image: redis
+    container_name: Redis
+    volumes:
+    - ./.containers/redis:/data
+    ports:
+    - 6379:6379

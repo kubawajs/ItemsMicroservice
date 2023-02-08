@@ -10,9 +10,9 @@ public sealed class CreateItemCommandHandler : IRequestHandler<CreateItemCommand
 
     public CreateItemCommandHandler(IItemsRepository itemsRepository) => _itemsRepository = itemsRepository;
 
-    public async Task<CreateItemResponse> Handle(CreateItemCommand request, CancellationToken cancellationToken)
+    public async Task<CreateItemResponse> Handle(CreateItemCommand request, CancellationToken cancellationToken = default)
     {
-        // TODO: DTO
+        // TODO: check if color exists
         var model = new Item
         {
             Code = request.Code,

@@ -22,10 +22,13 @@ public static class InfrastructureModule
             options.UseNpgsql(
                 configuration.GetConnectionString("Database")));
 
-        // Services registration
-        services.AddScoped<IItemsRepository, ItemsRepository>();
+        // Services
         services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
         services.AddScoped<IIdentityService, IdentityService>();
+        services.AddScoped<IDistributedCacheService, DistributedCacheService>();
+
+        services.AddScoped<IItemsRepository, ItemsRepository>();
+        services.Decorate<IItemsRepository, CachedItemsRepository>();
 
         // Authentication
         services.ConfigureIdentity();
@@ -35,6 +38,12 @@ public static class InfrastructureModule
 
         // Exceptions middleware
         services.AddSingleton<ExceptionsMiddleware>();
+
+        // Cache
+        services.AddStackExchangeRedisCache(options =>
+        {
+            options.Configuration = configuration.GetConnectionString("Redis");
+        });
     }
 
     public static async Task UseInfrastructureAsync(this IApplicationBuilder app)
@@ -56,6 +65,14 @@ public static class InfrastructureModule
             {
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
                 await StaticDbInitializer.CreateUsersAsync(userManager);
+            }
+            if(!context.Colors.Any())
+            {
+                await StaticDbInitializer.CreateColorsAsync(context);
+            }
+            if(!context.Items.Any())
+            {
+                await StaticDbInitializer.CreateItemsAsync(context);
             }
         }
     }
