@@ -1,4 +1,4 @@
-﻿namespace ItemsMicroservice.Infrastructure.Models;
+﻿namespace ItemsMicroservice.Infrastructure.Authentication.Models;
 
 public class AuthenticationResult
 {

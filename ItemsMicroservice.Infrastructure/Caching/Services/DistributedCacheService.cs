@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using System.Text.Json;
 
-namespace ItemsMicroservice.Infrastructure.Services;
+namespace ItemsMicroservice.Infrastructure.Caching.Services;
 
 internal sealed class DistributedCacheService : IDistributedCacheService
 {

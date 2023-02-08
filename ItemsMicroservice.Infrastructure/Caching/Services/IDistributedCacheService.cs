@@ -1,4 +1,4 @@
-﻿namespace ItemsMicroservice.Infrastructure.Services;
+﻿namespace ItemsMicroservice.Infrastructure.Caching.Services;
 public interface IDistributedCacheService
 {
     Task<T?> GetAsync<T>(string cacheKey, CancellationToken cancellationToken = default);

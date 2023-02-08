@@ -1,5 +1,5 @@
 ﻿using ItemsMicroservice.Core.Domain;
-using ItemsMicroservice.Infrastructure.Services;
+using ItemsMicroservice.Infrastructure.Caching.Services;
 
 namespace ItemsMicroservice.Infrastructure.Repositories;
 

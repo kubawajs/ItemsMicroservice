@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace ItemsMicroservice.Infrastructure.Middleware;
+namespace ItemsMicroservice.Infrastructure.Exceptions.Middleware;
 internal sealed class ExceptionsMiddleware : IMiddleware
 {
     private readonly ILogger<ExceptionsMiddleware> _logger;

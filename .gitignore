@@ -361,5 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/.containers/database
-/.containers/redis
+
+# Custom
+/.containers

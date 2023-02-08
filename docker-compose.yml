@@ -13,6 +13,7 @@ services:
     depends_on:
       - itemsmicroservice.db
       - itemsmicroservice.redis
+      - itemsmicroservice.rabbitmq
   
   itemsmicroservice.db:
     image: postgres:latest
@@ -27,9 +28,23 @@ services:
       - 5432:5432
 
   itemsmicroservice.redis:
-    image: redis
+    image: redis:latest
     container_name: Redis
     volumes:
     - ./.containers/redis:/data
     ports:
     - 6379:6379
+
+  itemsmicroservice.rabbitmq:
+    image: rabbitmq:management
+    container_name: Queue
+    hostname: itemsmicroservice-queue
+    volumes:
+    - ./.containers/queue/data/:/var/lib/rabbitmq
+    - ./.containers/queue/log/:/var/log/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    ports:
+    - 5672:5672
+    - 15672:15672

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace ItemsMicroservice.Infrastructure.Services;
+namespace ItemsMicroservice.Infrastructure.Authentication.Services;
 
 public interface IJwtTokenGenerator
 {

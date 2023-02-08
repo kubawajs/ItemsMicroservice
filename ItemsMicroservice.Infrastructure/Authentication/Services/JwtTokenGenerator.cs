@@ -1,12 +1,11 @@
-﻿using ItemsMicroservice.Infrastructure.Settings;
+﻿using ItemsMicroservice.Infrastructure.Authentication.Settings;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace ItemsMicroservice.Infrastructure.Services;
+namespace ItemsMicroservice.Infrastructure.Authentication.Services;
 
 internal sealed class JwtTokenGenerator : IJwtTokenGenerator
 {
@@ -15,11 +14,11 @@ internal sealed class JwtTokenGenerator : IJwtTokenGenerator
     private readonly RoleManager<IdentityRole> _roleManager;
 
     public JwtTokenGenerator(
-        IOptions<JwtSettings> jwtOptions,
+        JwtSettings jwtSettings,
         UserManager<IdentityUser> userManager,
         RoleManager<IdentityRole> roleManager)
     {
-        _jwtSettings = jwtOptions.Value;
+        _jwtSettings = jwtSettings;
         _userManager = userManager;
         _roleManager = roleManager;
     }

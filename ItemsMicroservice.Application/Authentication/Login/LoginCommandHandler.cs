@@ -1,4 +1,4 @@
-﻿using ItemsMicroservice.Infrastructure.Services;
+﻿using ItemsMicroservice.Infrastructure.Authentication.Services;
 using MediatR;
 
 namespace ItemsMicroservice.Application.Authentication.Login;

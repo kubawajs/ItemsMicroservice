@@ -1,6 +1,6 @@
 ﻿using ItemsMicroservice.Core.Exceptions;
 
-namespace ItemsMicroservice.Infrastructure.Exceptions;
+namespace ItemsMicroservice.Infrastructure.Exceptions.Models;
 
 public class InvalidCredentialsException : ItemsMicroserviceException
 {

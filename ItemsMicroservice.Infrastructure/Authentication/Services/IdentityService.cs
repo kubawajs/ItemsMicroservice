@@ -1,8 +1,8 @@
-﻿using ItemsMicroservice.Infrastructure.Exceptions;
-using ItemsMicroservice.Infrastructure.Models;
+﻿using ItemsMicroservice.Infrastructure.Authentication.Models;
+using ItemsMicroservice.Infrastructure.Exceptions.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace ItemsMicroservice.Infrastructure.Services;
+namespace ItemsMicroservice.Infrastructure.Authentication.Services;
 
 internal sealed class IdentityService : IIdentityService
 {
