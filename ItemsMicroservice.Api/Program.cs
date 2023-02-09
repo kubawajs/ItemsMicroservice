@@ -12,6 +12,9 @@ builder.Services.AddSwaggerGen();
 // Add custom services
 builder.Services.AddApplication(builder.Configuration);
 
+// Caching
+builder.Services.AddResponseCaching();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -34,5 +37,8 @@ app.UseHttpsRedirection();
 app.MapItemsEndpoints();
 app.MapAuthenticationEndpoints();
 app.MapColorsEndpoints();
+
+// Caching
+app.UseResponseCaching();
 
 app.Run();
