@@ -1,7 +1,7 @@
 ﻿using ItemsMicroservice.Core.Domain;
 
 namespace ItemsMicroservice.Infrastructure.Repositories;
-public interface IItemsRepository
+public interface IItemRepository
 {
     Task<IEnumerable<Item>> GetAllAsync(CancellationToken cancellationToken = default);
     Task<IEnumerable<Item>> GetPaginatedAsync(int page, int pageSize, CancellationToken cancellationToken = default);

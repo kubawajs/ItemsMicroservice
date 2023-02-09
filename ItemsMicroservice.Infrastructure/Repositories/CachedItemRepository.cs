@@ -3,14 +3,14 @@ using ItemsMicroservice.Infrastructure.Caching.Services;
 
 namespace ItemsMicroservice.Infrastructure.Repositories;
 
-internal sealed class CachedItemsRepository : IItemsRepository
+internal sealed class CachedItemRepository : IItemRepository
 {
     private string _cacheKeyPrefix = "items";
 
-    private readonly IItemsRepository _decoratedRepository;
+    private readonly IItemRepository _decoratedRepository;
     private readonly IDistributedCacheService _cacheService;
 
-    public CachedItemsRepository(IItemsRepository decoratedRepository, IDistributedCacheService cacheService)
+    public CachedItemRepository(IItemRepository decoratedRepository, IDistributedCacheService cacheService)
     {
         _decoratedRepository = decoratedRepository;
         _cacheService = cacheService;
@@ -25,7 +25,7 @@ internal sealed class CachedItemsRepository : IItemsRepository
     public async Task<IEnumerable<Item>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         var key = $"{_cacheKeyPrefix}-all";
-        var cachedItems = await _cacheService.GetAsync<IEnumerable<Item>>(key, cancellationToken);
+        var cachedItems = await _cacheService.GetAsync<IEnumerable<Item>?>(key, cancellationToken);
         if (cachedItems != null)
         {
             return cachedItems;
@@ -67,7 +67,7 @@ internal sealed class CachedItemsRepository : IItemsRepository
     public async Task<IEnumerable<Item>> GetPaginatedAsync(int page, int pageSize, CancellationToken cancellationToken = default)
     {
         var key = $"{_cacheKeyPrefix}-page{page}-size{pageSize}";
-        var cachedItems = await _cacheService.GetAsync<IEnumerable<Item>>(key, cancellationToken);
+        var cachedItems = await _cacheService.GetAsync<IEnumerable<Item>?>(key, cancellationToken);
         if (cachedItems != null)
         {
             return cachedItems;

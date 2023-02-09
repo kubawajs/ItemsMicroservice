@@ -18,7 +18,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "ItemsMicroservice.Api v1");
+        c.RoutePrefix = "api";
+    });
 }
 
 // Add custom modules
@@ -29,5 +33,6 @@ app.UseHttpsRedirection();
 // Map endpoints
 app.MapItemsEndpoints();
 app.MapAuthenticationEndpoints();
+app.MapColorsEndpoints();
 
 app.Run();

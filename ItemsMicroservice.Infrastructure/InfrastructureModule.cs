@@ -21,8 +21,13 @@ public static class InfrastructureModule
                 configuration.GetConnectionString("Database")));
 
         // Services
-        services.AddScoped<IItemsRepository, ItemsRepository>();
-        services.Decorate<IItemsRepository, CachedItemsRepository>();
+        services.AddScoped<IItemRepository, ItemRepository>();
+        services.Decorate<IItemRepository, LoggingItemRepository>();
+        services.Decorate<IItemRepository, CachedItemRepository>();
+
+        services.AddScoped<IColorRepository, ColorRepository>();
+        services.Decorate<IColorRepository, LoggingColorRepository>();
+        services.Decorate<IColorRepository, CachedColorRepository>();
 
         // Modules
         services.AddAuthenticationModule(configuration);

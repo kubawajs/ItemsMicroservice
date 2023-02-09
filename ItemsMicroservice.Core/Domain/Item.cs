@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ItemsMicroservice.Core.Domain;
 public sealed class Item
@@ -13,4 +12,7 @@ public sealed class Item
     
     public string Notes { get; set; }
     public string Color { get; set; }
+
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set;}
 }

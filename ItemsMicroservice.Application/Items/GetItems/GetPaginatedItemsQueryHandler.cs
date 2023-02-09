@@ -7,9 +7,9 @@ namespace ItemsMicroservice.Application.Items.GetItems;
 
 public sealed class GetPaginatedItemsQueryHandler : IRequestHandler<GetPaginatedItemsQuery, GetPaginatedItemsResponse>
 {
-    private readonly IItemsRepository _itemsRepository;
+    private readonly IItemRepository _itemsRepository;
 
-    public GetPaginatedItemsQueryHandler(IItemsRepository itemsRepository) => _itemsRepository = itemsRepository;
+    public GetPaginatedItemsQueryHandler(IItemRepository itemsRepository) => _itemsRepository = itemsRepository;
 
     public async Task<GetPaginatedItemsResponse> Handle(GetPaginatedItemsQuery request, CancellationToken cancellationToken = default)
     {

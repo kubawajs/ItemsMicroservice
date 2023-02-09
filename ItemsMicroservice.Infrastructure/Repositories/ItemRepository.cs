@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ItemsMicroservice.Infrastructure.Repositories;
 
-internal sealed class ItemsRepository : IItemsRepository
+internal sealed class ItemRepository : IItemRepository
 {
     private readonly ItemsMicroserviceDbContext _context;
 
-    public ItemsRepository(ItemsMicroserviceDbContext context)
+    public ItemRepository(ItemsMicroserviceDbContext context)
     {
         _context = context;
     }
@@ -31,6 +31,7 @@ internal sealed class ItemsRepository : IItemsRepository
     public async Task<IEnumerable<Item>> GetAllAsync(CancellationToken cancellationToken = default) =>
         await _context.Items
             .AsNoTracking()
+            .OrderBy(x => x.CreatedAt)
             .ToListAsync(cancellationToken: cancellationToken);
 
     public async Task UpdateAsync(Item item, CancellationToken cancellationToken = default)
@@ -47,6 +48,7 @@ internal sealed class ItemsRepository : IItemsRepository
         return await _context.Items
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
+            .OrderBy(x => x.CreatedAt)
             .AsNoTracking()
             .ToListAsync(cancellationToken: cancellationToken);
     }

@@ -5,9 +5,9 @@ namespace ItemsMicroservice.Application.Items.GetItem;
 
 public sealed class GetItemCommandHandler : IRequestHandler<GetItemQuery, GetItemResponse?>
 {
-    private readonly IItemsRepository _itemsRepository;
+    private readonly IItemRepository _itemsRepository;
 
-    public GetItemCommandHandler(IItemsRepository itemsRepository) => _itemsRepository = itemsRepository;
+    public GetItemCommandHandler(IItemRepository itemsRepository) => _itemsRepository = itemsRepository;
 
     public async Task<GetItemResponse?> Handle(GetItemQuery request, CancellationToken cancellationToken = default)
     {

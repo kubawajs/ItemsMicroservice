@@ -4,7 +4,6 @@ using ItemsMicroservice.Application.Items.GetItems;
 using ItemsMicroservice.Application.Items.UpdateItem;
 using ItemsMicroservice.Infrastructure;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ItemsMicroservice.Api.Modules;
 

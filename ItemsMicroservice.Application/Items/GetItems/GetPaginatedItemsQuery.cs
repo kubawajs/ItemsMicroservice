@@ -1,5 +1,4 @@
-﻿using ItemsMicroservice.Application.Items.GetItem;
-using MediatR;
+﻿using MediatR;
 
 namespace ItemsMicroservice.Application.Items.GetItems;
 
