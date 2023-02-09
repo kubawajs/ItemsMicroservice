@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ### Get items
-GET {{apiUrl}}/items
+GET {{apiUrl}}/items?page=21&pageSize=37
 Authorization: Bearer {{bearerToken}}
 
 ### Get item by code

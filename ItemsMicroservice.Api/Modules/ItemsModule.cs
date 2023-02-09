@@ -4,6 +4,7 @@ using ItemsMicroservice.Application.Items.GetItems;
 using ItemsMicroservice.Application.Items.UpdateItem;
 using ItemsMicroservice.Infrastructure;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ItemsMicroservice.Api.Modules;
 
@@ -11,9 +12,9 @@ internal static class ItemsModule
 {
     public static void MapItemsEndpoints(this WebApplication app)
     {
-        app.MapGet("/api/items", async (IMediator mediator) =>
+        app.MapGet("/api/items", async (IMediator mediator, int? page, int? pageSize) =>
         {
-            var query = new GetItemsQuery();
+            var query = new GetPaginatedItemsQuery(page, pageSize);
             var response = await mediator.Send(query);
             return response != null ? Results.Ok(response) : Results.NotFound();
         })

@@ -42,7 +42,10 @@ public static class InfrastructureModule
         using var context = scope.ServiceProvider.GetService<ItemsMicroserviceDbContext>();
         if(context != null)
         {
-            await context.Database.MigrateAsync();
+            if((await context.Database.GetPendingMigrationsAsync()).Any())
+            {
+                await context.Database.MigrateAsync();
+            }
             if(!context.Users.Any())
             {
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();

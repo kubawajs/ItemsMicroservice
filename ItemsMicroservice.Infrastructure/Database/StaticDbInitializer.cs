@@ -48,7 +48,7 @@ public static class StaticDbInitializer
         var items = new List<Item>();
         var colors = new[] { "red", "green", "blue", "yellow", "white", "black" };
         var random = new Random();
-        for(var index = 0; index < 1000; index++)
+        for(var index = 0; index < 200000; index++)
         {
             items.Add(new Item
             {

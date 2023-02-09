@@ -3,4 +3,4 @@ using MediatR;
 
 namespace ItemsMicroservice.Application.Items.GetItems;
 
-public sealed record GetItemsQuery : IRequest<IEnumerable<GetItemResponse>>;
+public sealed record GetPaginatedItemsQuery(int? Page, int? PageSize) : IRequest<GetPaginatedItemsResponse>;
