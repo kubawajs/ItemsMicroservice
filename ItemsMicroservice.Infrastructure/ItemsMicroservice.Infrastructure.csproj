@@ -29,4 +29,10 @@
     <ProjectReference Include="..\ItemsMicroservice.Core\ItemsMicroservice.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>ItemsMicroservice.Tests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
 </Project>

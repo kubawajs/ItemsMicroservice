@@ -20,6 +20,10 @@ Content-Type: application/json
   "password": "Admin123$"
 }
 
+### Get colors
+GET {{apiUrl}}/colors
+Authorization: Bearer {{bearerToken}}
+
 ### Get items
 GET {{apiUrl}}/items?page=21&pageSize=37
 Authorization: Bearer {{bearerToken}}

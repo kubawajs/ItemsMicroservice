@@ -3,11 +3,11 @@
 namespace ItemsMicroservice.Core.Domain;
 public sealed class Item
 {
-    [MaxLength(12)]
+    [StringLength(12)]
     public string Code { get; set; }
 
     [Required]
-    [MaxLength(200)]
+    [StringLength(200)]
     public string Name { get; set; }
     
     public string Notes { get; set; }

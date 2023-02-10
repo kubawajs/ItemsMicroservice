@@ -1,6 +1,7 @@
 ﻿using ItemsMicroservice.Core.Domain;
 
 namespace ItemsMicroservice.Infrastructure.Repositories;
+
 public interface IItemRepository
 {
     Task<IEnumerable<Item>> GetAllAsync(CancellationToken cancellationToken = default);
