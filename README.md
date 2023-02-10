@@ -27,19 +27,19 @@ Ports map:
 
 ## Proposed architecture
 
-[Architecture Diagram](assets/architecture.png)
+![Architecture Diagram](assets/architecture.png)
 
 ## API Documentation
 
 After opening the app in the browser, go to */api* to display Swagger documentation.
 
-[Swagger Doc](assets/swagger.png)
+![Swagger Doc](assets/swagger.png)
 
 ## Testing endpoints
 
 To test endpoints, open *ItemsMicroservice.rest* file in Visual Studio Code with REST extension to test endpoints.
 
-[REST Extension](assets/REST-extension.png)
+![REST Extension](assets/REST-extension.png)
 
 ## User stories
 
@@ -65,11 +65,13 @@ API Calls are listed in *ItemsMicroservice.rest* file.
 
 ## Implemented features:
 
-[x] Log in
-[x] User roles
-[x] Exception handling
-[x] RabbitMQ messages
-[x] Redis Caching
-[x] Pagination
-[x] Response caching
-[x] Logging
+- [x] Log in
+- [x] User roles
+- [x] Exception handling
+- [x] RabbitMQ messages
+- [x] Redis Caching
+- [x] Pagination
+- [ ] Sorting
+- [ ] Filtering
+- [x] Response caching
+- [x] Logging
